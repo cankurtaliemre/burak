@@ -14,6 +14,7 @@
         #intro-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.55); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 999999; transition: all 1s ease-in-out; padding: 20px; }
         #intro-overlay.fade-out { transform: translateY(-100%); opacity: 0; pointer-events: none; }
         .intro-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #fff; letter-spacing: 5px; margin-bottom: 2rem; text-transform: uppercase; text-align: center; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        
         .play-btn { background: #000; border: 2px solid #66fcf1; color: #66fcf1; padding: 15px 40px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; cursor: pointer; border-radius: 50px; transition: all 0.4s ease; box-shadow: 0 0 15px rgba(102, 252, 241, 0.4); }
         .play-btn:hover { background: #66fcf1; color: #0b0c10; box-shadow: 0 0 25px rgba(102, 252, 241, 0.8); transform: scale(1.05); }
         
@@ -101,6 +102,7 @@
         <div class="content-section" id="detaylar">
             <div class="content-container">
                 
+                <!-- Geri Sayım Alanı -->
                 <div class="countdown-booth">
                     <h2 class="countdown-title">Büyük Güne Kalan Zaman</h2>
                     <div class="countdown-timer" id="countdown">
@@ -123,6 +125,7 @@
                     </div>
                 </div>
 
+                <!-- Adres ve Tarih Detayları -->
                 <div class="single-card-wrapper">
                     <div class="card">
                         <div>
@@ -142,12 +145,50 @@
     </div>
 
     <script>
+        // Müzik ve Giriş Ekranı Ayarları
         var audio = document.getElementById('party-audio');
         var musicStarted = false;
 
-        // Arka Plan Slider Ayarları
+        function startParty() {
+            // Önce sayfa geçiş animasyonunu tetikliyoruz (müzik çalsın ya da çalmasın sayfa açılacak)
+            document.getElementById('intro-overlay').classList.add('fade-out');
+            document.getElementById('site-content').classList.add('show');
+            
+            // Sonra müziği çalmayı deniyoruz
+            try {
+                audio.currentTime = 0; 
+                let playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        musicStarted = true;
+                    }).catch(error => {
+                        console.log("Tarayıcı otomatik müzik çalmayı engelledi:", error);
+                    });
+                }
+            } catch (e) {
+                console.log("Müzik oynatma hatası:", e);
+            }
+        }
+
+        // Kullanıcı başka sekmeye geçerse müziği durdurur
+        document.addEventListener("visibilitychange", function() {
+            if (musicStarted) { 
+                if (document.hidden) { 
+                    audio.pause(); 
+                } else { 
+                    let playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => { console.log(error); });
+                    }
+                } 
+            }
+        });
+
+        // Arka Plan Resim Geçişleri (Slider)
         var slides = document.querySelectorAll('.hero-slider-img');
         var currentSlide = 0;
+        
         function nextSlide() {
             if(slides.length > 0) {
                 slides[currentSlide].classList.remove('active');
@@ -157,34 +198,16 @@
         }
         setInterval(nextSlide, 5000);
 
-        // Siteye Giriş ve Animasyon
-        function startParty() {
-            audio.currentTime = 0; 
-            audio.play().then(function() { musicStarted = true; }).catch(function(e){ console.log("Müzik başlatılamadı:", e); });
-            document.getElementById('intro-overlay').classList.add('fade-out');
-            document.getElementById('site-content').classList.add('show');
-        }
-
-        // Sekme değiştiğinde müziği durdur/başlat
-        document.addEventListener("visibilitychange", function() {
-            if (musicStarted) { 
-                if (document.hidden) { 
-                    audio.pause(); 
-                } else { 
-                    audio.play().catch(function(e){}); 
-                } 
-            }
-        });
-
-        // 19 Eylül 2026, Saat 12:00 İçin Geri Sayım
+        // Geri Sayım İşlemi (19 Eylül 2026 12:00)
         const countDownDate = new Date("Sep 19, 2026 12:00:00").getTime();
 
-        const countdownInterval = setInterval(function() {
+        const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
 
+            // Zaman dolduysa sayacı durdur
             if (distance < 0) {
-                clearInterval(countdownInterval);
+                clearInterval(x);
                 document.getElementById("days").innerHTML = "00";
                 document.getElementById("hours").innerHTML = "00";
                 document.getElementById("minutes").innerHTML = "00";
@@ -193,7 +216,19 @@
                 return;
             }
 
+            // Kalan zamanı hesapla
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Ekrana yazdır (Tek haneli sayılara 0 ekleyerek)
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+            
+        }, 1000);
+    </script>
+</body>
+</html>
