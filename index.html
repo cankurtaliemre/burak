@@ -11,53 +11,56 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { font-family: 'Montserrat', sans-serif; background-color: #fdfbf9; color: #4a4a4a; overflow-x: hidden; scroll-behavior: smooth; }
         
-        #intro-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 999999; transition: all 1s ease-in-out; padding: 20px; }
+        /* Giriş Ekranı Şeffaflığı Artırıldı ve Buzlu Cam Eklendi */
+        #intro-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 999999; transition: all 1s ease-in-out; padding: 20px; }
         #intro-overlay.fade-out { transform: translateY(-100%); opacity: 0; pointer-events: none; }
         
         /* Gold Tonları ve Soft Renkler */
-        .intro-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #b08d57; letter-spacing: 5px; margin-bottom: 2rem; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 5px rgba(0,0,0,0.05); }
+        .intro-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #b08d57; letter-spacing: 5px; margin-bottom: 2rem; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 5px rgba(255,255,255,0.8); }
         
-        .play-btn { background: transparent; border: 2px solid #b08d57; color: #b08d57; padding: 15px 40px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; cursor: pointer; border-radius: 50px; transition: all 0.4s ease; }
+        .play-btn { background: rgba(255, 255, 255, 0.7); border: 2px solid #b08d57; color: #b08d57; padding: 15px 40px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; cursor: pointer; border-radius: 50px; transition: all 0.4s ease; backdrop-filter: blur(4px); }
         .play-btn:hover { background: #b08d57; color: #fff; transform: scale(1.05); box-shadow: 0 10px 20px rgba(176, 141, 87, 0.2); }
         
         /* Sabit Arka Plan */
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; overflow: hidden; background: url('1.jpg') center center / cover no-repeat; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.35); z-index: 2; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.25); z-index: 2; }
         
         .scrollable-content { position: relative; z-index: 5; width: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; }
         .scrollable-content.show { opacity: 1; }
         
         .hero-section { height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; text-align: center; pointer-events: none; position: relative; }
         .hero-section * { pointer-events: auto; }
-        .hero-content { max-width: 850px; padding: 20px; display: flex; flex-direction: column; align-items: center; margin: 0 auto; background: rgba(255, 255, 255, 0.6); border-radius: 20px; backdrop-filter: blur(5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px;}
         
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: #b08d57; margin-bottom: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(255,255,255,0.8); }
-        .hero-content p { font-size: 1.15rem; line-height: 1.8; color: #4a4a4a; font-weight: 600; margin-bottom: 25px; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); }
+        /* İçerik Kutusu Şeffaflığı Artırıldı */
+        .hero-content { max-width: 850px; padding: 20px; display: flex; flex-direction: column; align-items: center; margin: 0 auto; background: rgba(255, 255, 255, 0.45); border-radius: 20px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px;}
+        
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: #b08d57; margin-bottom: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); }
+        .hero-content p { font-size: 1.15rem; line-height: 1.8; color: #4a4a4a; font-weight: 600; margin-bottom: 25px; text-shadow: 1px 1px 3px rgba(255,255,255,1); }
         
         .scroll-to-register { display: inline-block; background: #b08d57; color: #fff; padding: 14px 35px; font-weight: 600; text-transform: uppercase; text-decoration: none; border-radius: 50px; letter-spacing: 1px; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(176, 141, 87, 0.3); font-size: 0.95rem; }
         .scroll-to-register:hover { background: #967645; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(176, 141, 87, 0.4); }
         
         .badge-container { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 450px; }
-        .badge { background: rgba(255, 255, 255, 0.9); border: 1px solid #b08d57; padding: 12px 25px; border-radius: 50px; font-size: 0.95rem; color: #6b705c; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: center; }
+        .badge { background: rgba(255, 255, 255, 0.7); border: 1px solid #b08d57; padding: 12px 25px; border-radius: 50px; font-size: 0.95rem; color: #6b705c; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: center; backdrop-filter: blur(4px); }
         
         .content-section { width: 100%; padding: 40px 20px; position: relative; background: transparent; }
         .content-container { max-width: 1200px; margin: 0 auto; }
         
         /* Beyaz/Buzlu Cam Efektli Kutular */
-        .countdown-booth { margin-bottom: 40px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.3); border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; display: block; width: 100%; z-index: 10; }
+        .countdown-booth { margin-bottom: 40px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.3); border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; display: block; width: 100%; z-index: 10; }
         .countdown-booth::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #b08d57, transparent); border-top-left-radius: 20px; border-top-right-radius: 20px; }
         
         .countdown-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #b08d57; font-weight: 600; letter-spacing: 1px; margin-bottom: 25px; }
         
         .countdown-timer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .time-box { background: #fff; border: 1px solid rgba(176, 141, 87, 0.2); border-radius: 10px; padding: 15px; min-width: 90px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .time-box { background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(176, 141, 87, 0.2); border-radius: 10px; padding: 15px; min-width: 90px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .time-box span { display: block; }
         .time-number { font-size: 2.5rem; font-weight: 700; color: #4a4a4a; margin-bottom: 5px; }
         .time-label { font-size: 0.85rem; color: #b08d57; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
         .single-card-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 20px; }
         
-        .card { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(176, 141, 87, 0.3); }
+        .card { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(176, 141, 87, 0.3); }
         .card h2 { font-family: 'Playfair Display', serif; color: #b08d57; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(176, 141, 87, 0.2); padding-bottom: 15px; display: flex; align-items: center; gap: 10px; justify-content: center; }
         .info-item { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; text-align: center; color: #4a4a4a; }
         .info-item strong { color: #b08d57; font-weight: 600; }
@@ -78,7 +81,7 @@
         <button class="play-btn" onclick="startParty()">Davetiyeyi Gör</button>
     </div>
 
-    <!-- Slayt yerine sabit 1.jpg görseli eklendi -->
+    <!-- Sabit 1.jpg görseli -->
     <div class="fixed-bg">
         <div class="hero-overlay"></div>
     </div>
@@ -101,7 +104,6 @@
         <div class="content-section" id="detaylar">
             <div class="content-container">
                 
-                <!-- Geri Sayım Alanı -->
                 <div class="countdown-booth">
                     <h2 class="countdown-title">Büyük Güne Kalan Zaman</h2>
                     <div class="countdown-timer" id="countdown">
@@ -124,7 +126,6 @@
                     </div>
                 </div>
 
-                <!-- Adres ve Tarih Detayları -->
                 <div class="single-card-wrapper">
                     <div class="card">
                         <div>
@@ -144,16 +145,13 @@
     </div>
 
     <script>
-        // Müzik ve Giriş Ekranı Ayarları
         var audio = document.getElementById('party-audio');
         var musicStarted = false;
 
         function startParty() {
-            // Önce sayfa geçiş animasyonunu tetikliyoruz
             document.getElementById('intro-overlay').classList.add('fade-out');
             document.getElementById('site-content').classList.add('show');
             
-            // Sonra müziği çalmayı deniyoruz
             try {
                 audio.currentTime = 0; 
                 let playPromise = audio.play();
@@ -170,7 +168,6 @@
             }
         }
 
-        // Kullanıcı başka sekmeye geçerse müziği durdurur
         document.addEventListener("visibilitychange", function() {
             if (musicStarted) { 
                 if (document.hidden) { 
@@ -184,14 +181,12 @@
             }
         });
 
-        // Geri Sayım İşlemi (19 Eylül 2026 12:00)
         const countDownDate = new Date("Sep 19, 2026 12:00:00").getTime();
 
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
 
-            // Zaman dolduysa sayacı durdur
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("days").innerHTML = "00";
@@ -202,13 +197,11 @@
                 return;
             }
 
-            // Kalan zamanı hesapla
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Ekrana yazdır (Tek haneli sayılara 0 ekleyerek)
             document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
