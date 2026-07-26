@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- WhatsApp ve Sosyal Medya Önizleme Ayarları -->
     <title>Zehra & Burak - Nişanlanıyoruz!</title>
+    <meta property="og:title" content="Zehra & Burak - Nişanlanıyoruz!">
+    <meta property="og:description" content="Hikayemizin bu en özel gününde sizleri de yanımızda görmekten mutluluk duyarız.">
+    <meta property="og:image" content="https://cankurtaliemre.github.io/burak/1.jpg">
+    <meta property="og:url" content="https://cankurtaliemre.github.io/burak/index.html">
+    <meta property="og:type" content="website">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=300;400;600;700&family=Playfair+Display:ital,wght=0,600;1,400&display=swap" rel="stylesheet">
@@ -11,17 +19,14 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { font-family: 'Montserrat', sans-serif; background-color: #fdfbf9; color: #4a4a4a; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* Giriş Ekranı Şeffaflığı Artırıldı ve Buzlu Cam Eklendi */
         #intro-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 999999; transition: all 1s ease-in-out; padding: 20px; }
         #intro-overlay.fade-out { transform: translateY(-100%); opacity: 0; pointer-events: none; }
         
-        /* Gold Tonları ve Soft Renkler */
         .intro-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #b08d57; letter-spacing: 5px; margin-bottom: 2rem; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 5px rgba(255,255,255,0.8); }
         
         .play-btn { background: rgba(255, 255, 255, 0.7); border: 2px solid #b08d57; color: #b08d57; padding: 15px 40px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; cursor: pointer; border-radius: 50px; transition: all 0.4s ease; backdrop-filter: blur(4px); }
         .play-btn:hover { background: #b08d57; color: #fff; transform: scale(1.05); box-shadow: 0 10px 20px rgba(176, 141, 87, 0.2); }
         
-        /* Sabit Arka Plan */
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; overflow: hidden; background: url('1.jpg') center center / cover no-repeat; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.25); z-index: 2; }
         
@@ -31,7 +36,6 @@
         .hero-section { height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; text-align: center; pointer-events: none; position: relative; }
         .hero-section * { pointer-events: auto; }
         
-        /* İçerik Kutusu Şeffaflığı Artırıldı */
         .hero-content { max-width: 850px; padding: 20px; display: flex; flex-direction: column; align-items: center; margin: 0 auto; background: rgba(255, 255, 255, 0.45); border-radius: 20px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px;}
         
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: #b08d57; margin-bottom: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); }
@@ -46,12 +50,18 @@
         .content-section { width: 100%; padding: 40px 20px; position: relative; background: transparent; }
         .content-container { max-width: 1200px; margin: 0 auto; }
         
-        /* Beyaz/Buzlu Cam Efektli Kutular */
+        /* Yeni Çocukluk Fotoğrafı Alanı */
+        .story-booth { margin-bottom: 40px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.3); border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; display: block; width: 100%; z-index: 10; }
+        .story-booth::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #b08d57, transparent); border-top-left-radius: 20px; border-top-right-radius: 20px; }
+        .story-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #b08d57; font-weight: 600; letter-spacing: 1px; margin-bottom: 25px; }
+        .story-img-wrapper { width: 220px; height: 220px; margin: 0 auto 20px auto; border-radius: 50%; border: 3px solid #b08d57; overflow: hidden; box-shadow: 0 10px 25px rgba(176, 141, 87, 0.2); }
+        .story-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .story-text { font-size: 1.15rem; color: #4a4a4a; font-weight: 600; font-style: italic; }
+
+        /* Geri Sayım Kutusu */
         .countdown-booth { margin-bottom: 40px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.3); border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); position: relative; display: block; width: 100%; z-index: 10; }
         .countdown-booth::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #b08d57, transparent); border-top-left-radius: 20px; border-top-right-radius: 20px; }
-        
         .countdown-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #b08d57; font-weight: 600; letter-spacing: 1px; margin-bottom: 25px; }
-        
         .countdown-timer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .time-box { background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(176, 141, 87, 0.2); border-radius: 10px; padding: 15px; min-width: 90px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .time-box span { display: block; }
@@ -59,7 +69,6 @@
         .time-label { font-size: 0.85rem; color: #b08d57; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
         .single-card-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 20px; }
-        
         .card { width: 100%; max-width: 800px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(176, 141, 87, 0.3); }
         .card h2 { font-family: 'Playfair Display', serif; color: #b08d57; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(176, 141, 87, 0.2); padding-bottom: 15px; display: flex; align-items: center; gap: 10px; justify-content: center; }
         .info-item { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; text-align: center; color: #4a4a4a; }
@@ -67,7 +76,7 @@
         
         .map-placeholder { width: 100%; height: 400px; border-radius: 10px; overflow: hidden; margin-top: 30px; border: 1px solid rgba(176, 141, 87, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: block; }
         
-        @media (max-width: 900px) { .hero-content h1 { font-size: 2.2rem; } .countdown-timer { gap: 10px; } .time-box { min-width: 70px; padding: 10px; } .time-number { font-size: 2rem; } .hero-content { padding: 25px; margin: 15px; } }
+        @media (max-width: 900px) { .hero-content h1 { font-size: 2.2rem; } .countdown-timer { gap: 10px; } .time-box { min-width: 70px; padding: 10px; } .time-number { font-size: 2rem; } .hero-content { padding: 25px; margin: 15px; } .story-img-wrapper { width: 160px; height: 160px; } }
     </style>
 </head>
 <body>
@@ -104,6 +113,16 @@
         <div class="content-section" id="detaylar">
             <div class="content-container">
                 
+                <!-- Çocukluk Fotoğrafı Alanı -->
+                <div class="story-booth">
+                    <h2 class="story-title">Hikayemizin Başlangıcı</h2>
+                    <div class="story-img-wrapper">
+                        <img src="c.jpeg" alt="Zehra ve Burak Çocukluk" class="story-photo">
+                    </div>
+                    <p class="story-text">"Küçüklükten bugüne, sevgiyle büyüyen hikayemiz..."</p>
+                </div>
+
+                <!-- Geri Sayım Alanı -->
                 <div class="countdown-booth">
                     <h2 class="countdown-title">Büyük Güne Kalan Zaman</h2>
                     <div class="countdown-timer" id="countdown">
