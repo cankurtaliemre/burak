@@ -145,7 +145,7 @@
         var audio = document.getElementById('party-audio');
         var musicStarted = false;
 
-        // Slider Ayarları
+        // Arka Plan Slider Ayarları
         var slides = document.querySelectorAll('.hero-slider-img');
         var currentSlide = 0;
         function nextSlide() {
@@ -157,27 +157,43 @@
         }
         setInterval(nextSlide, 5000);
 
-        // Müzik ve Giriş Kontrolü
+        // Siteye Giriş ve Animasyon
         function startParty() {
             audio.currentTime = 0; 
-            audio.play().then(function() { musicStarted = true; }).catch(function(e){});
+            audio.play().then(function() { musicStarted = true; }).catch(function(e){ console.log("Müzik başlatılamadı:", e); });
             document.getElementById('intro-overlay').classList.add('fade-out');
             document.getElementById('site-content').classList.add('show');
         }
 
+        // Sekme değiştiğinde müziği durdur/başlat
         document.addEventListener("visibilitychange", function() {
-            if (musicStarted) { if (document.hidden) { audio.pause(); } else { audio.play().catch(function(e){}); } }
+            if (musicStarted) { 
+                if (document.hidden) { 
+                    audio.pause(); 
+                } else { 
+                    audio.play().catch(function(e){}); 
+                } 
+            }
         });
 
-        // Geri Sayım Sayacı İşlevi (19 Eylül 2026, 12:00)
+        // 19 Eylül 2026, Saat 12:00 İçin Geri Sayım
         const countDownDate = new Date("Sep 19, 2026 12:00:00").getTime();
 
-        const x = setInterval(function() {
+        const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
 
-            // Zaman hesaplamaları
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                document.querySelector(".countdown-title").innerHTML = "Büyük Gün Geldi Çattı!";
+                return;
+            }
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (100Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+            const seconds = Math.Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
